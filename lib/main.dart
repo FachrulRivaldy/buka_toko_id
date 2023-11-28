@@ -1,5 +1,5 @@
-import 'package:bukatokoid/screens/home_screen.dart';
 import 'package:bukatokoid/screens/main_screen.dart';
+import 'package:bukatokoid/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Buka Toko ID',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
         useMaterial3: true,
       ),
       home: const MainScreen(),

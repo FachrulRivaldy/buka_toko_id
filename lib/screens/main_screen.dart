@@ -2,6 +2,7 @@ import 'package:bukatokoid/screens/cart_screen.dart';
 import 'package:bukatokoid/screens/favorite_screen.dart';
 import 'package:bukatokoid/screens/home_screen.dart';
 import 'package:bukatokoid/screens/profile_screen.dart';
+import 'package:bukatokoid/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -42,13 +43,9 @@ class _MainScreenState extends State<MainScreen> {
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Buka',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
-            Text(
-              'Toko',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
-            ),
+            Text('BukaToko',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: primaryColor)),
             Text('ID',
                 style: TextStyle(
                   fontWeight: FontWeight.normal,
@@ -80,7 +77,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color(0xFF5E73E1),
+        selectedItemColor: primaryColor,
         unselectedItemColor: Colors.grey.shade400,
         onTap: _onItemTapped,
       ),

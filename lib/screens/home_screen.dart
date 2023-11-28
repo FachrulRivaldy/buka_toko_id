@@ -1,5 +1,6 @@
 import 'package:bukatokoid/models/slider_model.dart';
 import 'package:bukatokoid/services/product_service.dart';
+import 'package:bukatokoid/utils/constants.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:bukatokoid/services/slider_service.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -57,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
               activeIndex: activeIndex,
               count: sliders.length,
               effect: const ExpandingDotsEffect(
-                  activeDotColor: Colors.blue,
+                  activeDotColor: primaryColor,
                   dotColor: Colors.grey,
                   dotHeight: 10,
                   dotWidth: 10,
@@ -72,17 +73,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Top Headlines",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
+                    "Top Products",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "More",
                     style: TextStyle(
                         fontSize: 14,
-                        color: Colors.blue,
+                        color: primaryColor,
                         fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -97,6 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return GridView.builder(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,

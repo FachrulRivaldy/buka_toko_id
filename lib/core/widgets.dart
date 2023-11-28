@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bukatokoid/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class BuildCarousel extends StatelessWidget {
@@ -96,6 +97,42 @@ class ProductCard extends StatelessWidget {
               ),
             ],
           )),
+    );
+  }
+}
+
+class OrderHistoryButton extends StatelessWidget {
+  final IconData icon;
+  final String text;
+  final VoidCallback onPressedFunction;
+  const OrderHistoryButton({
+    Key? key,
+    required this.icon,
+    required this.text,
+    required this.onPressedFunction,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: onPressedFunction,
+          style: ElevatedButton.styleFrom(
+              fixedSize: const Size(75, 75),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              padding: const EdgeInsets.all(10),
+              backgroundColor: primaryColor),
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 40,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(text),
+      ],
     );
   }
 }
