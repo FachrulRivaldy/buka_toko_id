@@ -28,32 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        leading: const Icon(Icons.menu),
-        actions: const <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: 18),
-            child: Icon(Icons.notifications_outlined),
-          )
-        ],
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Buka',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
-            Text(
-              'Toko',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
-            ),
-            Text('ID',
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                )),
-          ],
-        ),
-      ),
       body: SafeArea(
         child: Column(
           children: [
