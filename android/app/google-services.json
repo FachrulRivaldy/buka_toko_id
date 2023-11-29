@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "779911026137",
+    "project_id": "sanberbukatokoid",
+    "storage_bucket": "sanberbukatokoid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779911026137:android:54646d995a59dff1c175c8",
+        "android_client_info": {
+          "package_name": "com.example.bukatokoid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOVTDBTFC3uP_sPXKvfpKjA9C2WY6Q0vA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

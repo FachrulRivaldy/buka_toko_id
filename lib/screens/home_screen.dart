@@ -1,12 +1,15 @@
 import 'package:bukatokoid/models/slider_model.dart';
+import 'package:bukatokoid/screens/all_product_screen.dart';
 import 'package:bukatokoid/services/product_service.dart';
 import 'package:bukatokoid/utils/constants.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:bukatokoid/services/slider_service.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:bukatokoid/core/widgets.dart';
 import 'package:bukatokoid/models/product_model.dart';
+import 'package:bukatokoid/config/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     sliders = getSliders();
-    products = ProductService().fetchProducts();
+    products = ProductService().fetchTopProducts();
     super.initState();
   }
 
@@ -67,21 +70,29 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 16,
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     "Top Products",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "More",
-                    style: TextStyle(
-                        fontSize: 14,
-                        color: primaryColor,
-                        fontWeight: FontWeight.bold),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AllProductScreen()));
+                    },
+                    child: const Text(
+                      "More",
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: primaryColor,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ],
               ),
