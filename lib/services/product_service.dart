@@ -29,4 +29,30 @@ class ProductService {
       throw Exception('Failed to load products');
     }
   }
+
+  Future<List<Product>> fetchFavProducts() async {
+    final response = await http.get(Uri.parse('$baseUrl/products?limit=3'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      List<Product> productList =
+          data.map((json) => Product.fromJson(json)).toList();
+      return productList;
+    } else {
+      throw Exception('Failed to load products');
+    }
+  }
+
+  Future<List<Product>> fetchCartProducts() async {
+    final response = await http.get(Uri.parse('$baseUrl/products/category/jewelery?limit=1'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      List<Product> productList =
+          data.map((json) => Product.fromJson(json)).toList();
+      return productList;
+    } else {
+      throw Exception('Failed to load products');
+    }
+  }
 }

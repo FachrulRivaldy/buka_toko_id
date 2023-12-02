@@ -21,7 +21,7 @@ class PageRouteApp {
     ),
     GetPage(
       name: RouteName.profile,
-      page: () => const ProfileScreen(),
+      page: () => ProfileScreen(),
     ),
     GetPage(
       name: RouteName.allProducts,
