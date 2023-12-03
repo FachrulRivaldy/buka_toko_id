@@ -1,8 +1,10 @@
 import 'package:bukatokoid/screens/login_screen.dart';
 import 'package:bukatokoid/core/widgets.dart';
+import 'package:bukatokoid/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -48,10 +50,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SafeArea(
         child: Center(
           child: SizedBox(
-            height: 500,
+            height: 600,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('BukaToko',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: primaryColor,
+                            fontSize: 48)),
+                    Text('ID',
+                        style: TextStyle(
+                            fontWeight: FontWeight.normal, fontSize: 48)),
+                  ],
+                ),
                 Text("Register Form", style: titleText()),
                 PrimaryForm(
                   controller: _nameController,
@@ -81,10 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 PrimaryButton(
                   onPressed: () {
                     registerSubmit();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const LoginScreen();
-                    }));
+                    Get.toNamed('/login');
                   },
                   text: "Register",
                 ),

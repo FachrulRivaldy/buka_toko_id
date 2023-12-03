@@ -1,10 +1,10 @@
 // ignore_for_file: file_names
 
-import 'package:bukatokoid/screens/main_screen.dart';
 import 'package:bukatokoid/core/widgets.dart';
-import 'package:bukatokoid/screens/register_screen.dart';
+import 'package:bukatokoid/utils/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,17 +19,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  var _passwordVisible = false;
+  final _passwordVisible = false;
 
   loginSubmit() async {
     try {
       await _auth
           .signInWithEmailAndPassword(
               email: _emailController.text, password: _passwordController.text)
-          .then((value) => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const MainScreen())));
+          .then((value) => Get.toNamed('/main'));
     } catch (e) {
-      print(e);
       showSnackBar(e.toString());
     }
   }
@@ -56,10 +54,18 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Image.asset(
-                    "assets/img/logo.png",
-                    width: 200,
-                    height: 200,
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('BukaToko',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: primaryColor,
+                              fontSize: 48)),
+                      Text('ID',
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal, fontSize: 48)),
+                    ],
                   ),
                   const SizedBox(
                     height: 20,
@@ -75,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   PrimaryForm(
                     controller: _passwordController,
-                    isObscure: true,
+                    isObscure: !_passwordVisible,
                     hintText: "Password",
                     prefixIcon: Icons.lock,
                     suffixIcon1: Icons.visibility,
@@ -134,10 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: linkText(),
                           ),
                           onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return const RegisterScreen();
-                            }));
+                            Get.toNamed('/register');
                           }),
                     ],
                   ),

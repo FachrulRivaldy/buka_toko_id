@@ -9,7 +9,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:bukatokoid/core/widgets.dart';
 import 'package:bukatokoid/models/product_model.dart';
-import 'package:bukatokoid/config/routes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -81,10 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AllProductScreen()));
+                      Get.toNamed('/allProducts');
                     },
                     child: const Text(
                       "More",

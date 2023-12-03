@@ -9,6 +9,8 @@ import 'package:bukatokoid/screens/profile_screen.dart';
 import 'package:bukatokoid/utils/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -45,8 +47,9 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<void> _signOut() async {
-    await FirebaseAuth.instance.signOut().then((value) => Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const LoginScreen())));
+    await FirebaseAuth.instance
+        .signOut()
+        .then((value) => Get.toNamed('/login'));
   }
 
   @override
@@ -86,7 +89,10 @@ class _MainScreenState extends State<MainScreen> {
                   DrawerListTile(
                     iconData: Icons.logout,
                     title: "Logout",
-                    onTilePressed: () {
+                    onTilePressed: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.clear();
                       _signOut();
                     },
                   ),
@@ -103,10 +109,7 @@ class _MainScreenState extends State<MainScreen> {
             padding: const EdgeInsets.only(right: 18),
             child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NotificationScreen()));
+                  Get.toNamed('/notification');
                 },
                 child: const Icon(Icons.notifications_outlined)),
           )

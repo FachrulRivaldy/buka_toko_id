@@ -1,5 +1,7 @@
+import 'package:bukatokoid/config/routes.dart';
 import 'package:bukatokoid/firebase_options.dart';
 import 'package:bukatokoid/screens/login_screen.dart';
+import 'package:bukatokoid/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:bukatokoid/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +27,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      getPages: PageRouteApp.pages,
+      home: const SplashScreen(),
     );
   }
 }
